@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENDIFY - Plataforma de Gestión Logística Integral</title>
+    <meta name="description" content="Gestiona, rastrea y optimiza tus envíos con SENDIFY. Cotización automática, tracking unificado y notificaciones inteligentes para tu operación logística.">
+    <meta name="keywords" content="gestión logística, tracking envíos, cotización courier, notificaciones automáticas, administración envíos, plataforma logística">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SENDIFY - Simplifica tu gestión logística">
+    <meta property="og:description" content="Plataforma integral para gestionar envíos, comparar tarifas y mantener visibilidad completa de tu operación logística.">
+    <meta property="og:type" content="website">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
+                        <text x="10" y="25" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FF9500">SENDIFY</text>
+                    </svg>
+                </div>
+                <nav class="nav">
+                    <a href="#inicio" class="nav-link">Inicio</a>
+                    <a href="#funcionalidades" class="nav-link">Funcionalidades</a>
+                    <a href="#beneficios" class="nav-link">Beneficios</a>
+                    <a href="#testimonios" class="nav-link">Testimonios</a>
+                    <a href="#equipo" class="nav-link">Equipo</a>
+                    <a href="#precios" class="nav-link">Precios</a>
+                </nav>
+                <button class="btn btn-primary" onclick="goToDashboard()">
+                    Acceder al Dashboard
+                </button>
+                <!-- Mobile menu button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#inicio" class="mobile-nav-link">Inicio</a>
+            <a href="#funcionalidades" class="mobile-nav-link">Funcionalidades</a>
+            <a href="#beneficios" class="mobile-nav-link">Beneficios</a>
+            <a href="#testimonios" class="mobile-nav-link">Testimonios</a>
+            <a href="#equipo" class="mobile-nav-link">Equipo</a>
+            <a href="#precios" class="mobile-nav-link">Precios</a>
+            <button class="btn btn-primary w-full" onclick="goToDashboard()">
+                Acceder al Dashboard
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-glow"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Simplifica y controla tus envíos con 
+                        <span class="text-orange">SENDIFY</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Una plataforma centralizada para gestionar, rastrear y optimizar tus envíos.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary btn-lg" onclick="goToDashboard()">
+                            Probar Demo
+                        </button>
+                        <button class="btn btn-outline btn-lg" onclick="openRegisterModal()">
+                            Registrarse Gratis
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="packages-container">
+                        <div class="package package-1"></div>
+                        <div class="package package-2"></div>
+                        <div class="package package-3"></div>
+                        <div class="package package-4"></div>
+                    </div>
+                    <div class="hero-visual-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="funcionalidades" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Funcionalidades Principales</h2>
+                <p class="section-subtitle">
+                    Descubre cómo SENDIFY optimiza cada aspecto de tu gestión logística
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="package"></i>
+                    </div>
+                    <h3>Gestión de Envíos</h3>
+                    <p>Crea y administra envíos con datos completos. Guarda clientes frecuentes para agilizar operaciones futuras.</p>
+                    <ul class="feature-list">
+                        <li>Creación rápida de órdenes</li>
+                        <li>Base de datos de clientes</li>
+                        <li>Validación automática</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="search"></i>
+                    </div>
+                    <h3>Tracking Unificado</h3>
+                    <p>Rastrea todos tus envíos desde una interfaz única. Timeline detallado y consulta pública para clientes.</p>
+                    <ul class="feature-list">
+                        <li>Estados en tiempo real</li>
+                        <li>Timeline interactivo</li>
+                        <li>Portal público</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="calculator"></i>
+                    </div>
+                    <h3>Cotización de Tarifas</h3>
+                    <p>Compara precios entre múltiples couriers automáticamente. Optimiza costos y tiempos de entrega.</p>
+                    <ul class="feature-list">
+                        <li>Comparación automática</li>
+                        <li>Múltiples couriers</li>
+                        <li>Análisis costo-beneficio</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="bell"></i>
+                    </div>
+                    <h3>Notificaciones Inteligentes</h3>
+                    <p>Alertas automáticas de retrasos, confirmaciones de entrega y actualizaciones para todos los stakeholders.</p>
+                    <ul class="feature-list">
+                        <li>Alertas de retrasos</li>
+                        <li>Confirmaciones automáticas</li>
+                        <li>Multi-canal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Por qué elegir SENDIFY?</h2>
+                <p class="section-subtitle">
+                    Optimiza tu operación logística y reduce costos operativos
+                </p>
+            </div>
+            <div class="benefits-content">
+                <div class="benefits-text">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Reducción de Costos</h3>
+                            <p>Optimiza rutas y compara tarifas automáticamente para reducir hasta un 30% en costos de envío.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Ahorro de Tiempo</h3>
+                            <p>Automatiza procesos manuales y centraliza información para ahorrar hasta 5 horas semanales.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Mayor Control</h3>
+                            <p>Visibilidad completa de todos tus envíos con reportes detallados y métricas en tiempo real.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Mejor Experiencia</h3>
+                            <p>Clientes más satisfechos con tracking transparente y comunicación proactiva de estados.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="benefits-visual">
+                    <div class="dashboard-preview">
+                        <div class="dashboard-header">
+                            <div class="dashboard-logo"></div>
+                            <div class="dashboard-title">Dashboard SENDIFY</div>
+                        </div>
+                        <div class="dashboard-stats">
+                            <div class="stat-card">
+                                <div class="stat-value">47</div>
+                                <div class="stat-label">Envíos Activos</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">23</div>
+                                <div class="stat-label">En Tránsito</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">15</div>
+                                <div class="stat-label">Entregados</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <p class="section-subtitle">
+                    Empresas que ya optimizaron su gestión logística con SENDIFY
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"SENDIFY transformó nuestra operación logística. Ahora tenemos visibilidad completa de todos nuestros envíos y hemos reducido costos significativamente."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Gerente de Operaciones, TechStore SA</p>
+                        </div>
+                        <div class="testimonial-rating">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"La facilidad para comparar tarifas y el tracking en tiempo real nos permite ofrecer mejor servicio a nuestros clientes. Excelente plataforma."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p>CEO, Moda Express</p>
+                        </div>
+                        <div class="testimonial-rating">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Las notificaciones automáticas y los reportes detallados nos ayudan a tomar mejores decisiones. SENDIFY es indispensable para nuestro negocio."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Ana Rodríguez</h4>
+                            <p>Directora Logística, Electro Mundial</p>
+                        </div>
+                        <div class="testimonial-rating">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="equipo" class="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestro Equipo</h2>
+                <p class="section-subtitle">
+                    Profesionales especializados en logística y tecnología
+                </p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="photo-placeholder"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Diego Ramírez</h3>
+                        <p class="team-role">CEO & Fundador</p>
+                        <p class="team-description">15+ años en logística internacional. Ex-director de operaciones en DHL.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="photo-placeholder"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Laura Sánchez</h3>
+                        <p class="team-role">CTO</p>
+                        <p class="team-description">Ingeniera en Sistemas con especialización en plataformas logísticas.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="photo-placeholder"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Roberto Chen</h3>
+                        <p class="team-role">Head of Product</p>
+                        <p class="team-description">Product Manager con experiencia en startups de logística y e-commerce.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precios" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Planes que se adaptan a ti</h2>
+                <p class="section-subtitle">
+                    Desde startups hasta empresas. Encuentra el plan perfecto para tu operación.
+                </p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Free</h3>
+                        <div class="price">
+                            <span class="currency">S/</span>
+                            <span class="amount">0</span>
+                            <span class="period">/mes</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature">✓ Hasta 10 envíos/mes</div>
+                        <div class="feature">✓ Tracking básico</div>
+                        <div class="feature">✓ 1 usuario</div>
+                        <div class="feature">✓ Soporte por email</div>
+                    </div>
+                    <button class="btn btn-outline w-full" onclick="openRegisterModal()">
+                        Comenzar Gratis
+                    </button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Más Popular</div>
+                    <div class="pricing-header">
+                        <h3>Pro</h3>
+                        <div class="price">
+                            <span class="currency">S/</span>
+                            <span class="amount">99</span>
+                            <span class="period">/mes</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature">✓ Hasta 500 envíos/mes</div>
+                        <div class="feature">✓ Tracking avanzado</div>
+                        <div class="feature">✓ 5 usuarios</div>
+                        <div class="feature">✓ Reportes y analítica</div>
+                        <div class="feature">✓ API access</div>
+                        <div class="feature">✓ Soporte prioritario</div>
+                    </div>
+                    <button class="btn btn-primary w-full" onclick="goToDashboard()">
+                        Probar 14 días gratis
+                    </button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="price">
+                            <span class="currency">S/</span>
+                            <span class="amount">299</span>
+                            <span class="period">/mes</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature">✓ Envíos ilimitados</div>
+                        <div class="feature">✓ Tracking premium</div>
+                        <div class="feature">✓ Usuarios ilimitados</div>
+                        <div class="feature">✓ Analítica avanzada</div>
+                        <div class="feature">✓ API completa</div>
+                        <div class="feature">✓ Soporte 24/7</div>
+                        <div class="feature">✓ Integraciones custom</div>
+                    </div>
+                    <button class="btn btn-outline w-full" onclick="goToDashboard()">
+                        Contactar Ventas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
+                            <text x="10" y="25" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FF9500">SENDIFY</text>
+                        </svg>
+                    </div>
+                    <p>Simplificando la gestión logística para empresas de todos los tamaños.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Producto</h4>
+                        <a href="#funcionalidades">Funcionalidades</a>
+                        <a href="#precios">Precios</a>
+                        <a href="#">API</a>
+                        <a href="#">Integraciones</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <a href="#equipo">Equipo</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Prensa</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Soporte</h4>
+                        <a href="#">Centro de Ayuda</a>
+                        <a href="#">Contacto</a>
+                        <a href="#">Estado del Sistema</a>
+                        <a href="#">Documentación</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#">Términos de Servicio</a>
+                        <a href="#">Política de Privacidad</a>
+                        <a href="#">Cookies</a>
+                        <a href="#">GDPR</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SENDIFY. Todos los derechos reservados.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link">LinkedIn</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-backdrop" onclick="closeRegisterModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Únete a SENDIFY</h2>
+                <p>Comienza gratis y optimiza tu gestión logística</p>
+                <button class="modal-close" onclick="closeRegisterModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <form class="register-form" onsubmit="handleRegister(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">Nombre *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Apellido *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Contraseña *</label>
+                        <input type="password" id="password" name="password" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="company">Empresa *</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="businessType">Tipo de Negocio *</label>
+                        <select id="businessType" name="businessType" required>
+                            <option value="">Seleccionar</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="retail">Retail</option>
+                            <option value="manufacturer">Manufacturero</option>
+                            <option value="distributor">Distribuidor</option>
+                            <option value="startup">Startup</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+                        <span class="checkmark"></span>
+                        Acepto los <a href="#" class="text-orange">términos y condiciones</a> y la <a href="#" class="text-orange">política de privacidad</a>
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeRegisterModal()">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Crear cuenta
+                    </button>
+                </div>
+                <p class="form-note">
+                    Comenzarás con el plan Free. Podrás actualizar en cualquier momento.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

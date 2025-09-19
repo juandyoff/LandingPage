@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SENDIFY</title>
+    <meta name="description" content="Dashboard de gestión logística SENDIFY. Administra envíos, tracking, cotizaciones y notificaciones.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="dashboard-body">
+    <!-- Dashboard Container -->
+    <div id="dashboardContainer" class="dashboard-container">
+        <!-- Main Dashboard View -->
+        <div id="mainDashboard" class="dashboard-view active">
+            <div class="dashboard-header">
+                <div class="dashboard-brand">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
+                        <text x="10" y="25" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FF9500">SENDIFY</text>
+                    </svg>
+                    <div class="dashboard-title-group">
+                        <h1>Dashboard SENDIFY</h1>
+                        <p>Gestiona todos tus envíos desde un solo lugar</p>
+                    </div>
+                </div>
+                <button class="btn btn-outline" onclick="goBackToLanding()">
+                    <i data-lucide="arrow-left"></i>
+                    Volver al inicio
+                </button>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <span class="stat-label">Envíos Activos</span>
+                            <span class="stat-value">47</span>
+                            <span class="stat-change positive">+12%</span>
+                        </div>
+                        <div class="stat-icon blue">
+                            <i data-lucide="package"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <span class="stat-label">En Tránsito</span>
+                            <span class="stat-value">23</span>
+                            <span class="stat-change positive">+5%</span>
+                        </div>
+                        <div class="stat-icon orange">
+                            <i data-lucide="truck"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <span class="stat-label">Entregados Hoy</span>
+                            <span class="stat-value">15</span>
+                            <span class="stat-change positive">+18%</span>
+                        </div>
+                        <div class="stat-icon green">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <span class="stat-label">Alertas Pendientes</span>
+                            <span class="stat-value">3</span>
+                            <span class="stat-change negative">-25%</span>
+                        </div>
+                        <div class="stat-icon red">
+                            <i data-lucide="alert-triangle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2>Acciones Rápidas</h2>
+                <div class="actions-grid">
+                    <div class="action-card" onclick="showView('createShipment')">
+                        <div class="action-icon blue">
+                            <i data-lucide="package"></i>
+                        </div>
+                        <h3>Crear Nuevo Envío</h3>
+                        <p>Registra un nuevo envío con datos completos</p>
+                    </div>
+                    <div class="action-card" onclick="showView('tracking')">
+                        <div class="action-icon orange">
+                            <i data-lucide="search"></i>
+                        </div>
+                        <h3>Rastrear Envío</h3>
+                        <p>Consulta el estado de cualquier envío</p>
+                    </div>
+                    <div class="action-card" onclick="showView('quotation')">
+                        <div class="action-icon green">
+                            <i data-lucide="calculator"></i>
+                        </div>
+                        <h3>Cotizar Tarifas</h3>
+                        <p>Compara precios entre diferentes couriers</p>
+                    </div>
+                    <div class="action-card" onclick="showView('notifications')">
+                        <div class="action-icon purple">
+                            <i data-lucide="bell"></i>
+                        </div>
+                        <h3>Notificaciones</h3>
+                        <p>Gestiona alertas y configuraciones</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Shipments -->
+            <div class="recent-shipments">
+                <h2>Envíos Recientes</h2>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Cliente</th>
+                                <th>Destino</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="shipment-code">SND-001</code></td>
+                                <td>TechStore SA</td>
+                                <td>Lima</td>
+                                <td><span class="badge badge-warning">En tránsito</span></td>
+                                <td>2024-01-15</td>
+                                <td>
+                                    <button class="btn btn-sm" onclick="trackShipment('SND-001')">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="shipment-code">SND-002</code></td>
+                                <td>Moda Express</td>
+                                <td>Cusco</td>
+                                <td><span class="badge badge-success">Entregado</span></td>
+                                <td>2024-01-15</td>
+                                <td>
+                                    <button class="btn btn-sm" onclick="trackShipment('SND-002')">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="shipment-code">SND-003</code></td>
+                                <td>Electro Mundial</td>
+                                <td>Arequipa</td>
+                                <td><span class="badge badge-warning">En reparto</span></td>
+                                <td>2024-01-14</td>
+                                <td>
+                                    <button class="btn btn-sm" onclick="trackShipment('SND-003')">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="shipment-code">SND-004</code></td>
+                                <td>Librería Central</td>
+                                <td>Trujillo</td>
+                                <td><span class="badge badge-secondary">Registrado</span></td>
+                                <td>2024-01-14</td>
+                                <td>
+                                    <button class="btn btn-sm" onclick="trackShipment('SND-004')">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- New Epic Cards -->
+            <div class="epic-cards">
+                <div class="epic-card" onclick="showView('reports')">
+                    <div class="epic-header">
+                        <div class="epic-icon">
+                            <i data-lucide="bar-chart-3"></i>
+                        </div>
+                        <h3>Reportes y Analítica</h3>
+                    </div>
+                    <p>Genera reportes de costos y tiempos para optimizar decisiones</p>
+                    <ul class="epic-features">
+                        <li>Reportes de desempeño consolidados</li>
+                        <li>Exportación en CSV y PDF</li>
+                        <li>Análisis de tiempos de entrega</li>
+                        <li>Métricas de costos por período</li>
+                    </ul>
+                </div>
+                
+                <div class="epic-card" onclick="showView('api')">
+                    <div class="epic-header">
+                        <div class="epic-icon">
+                            <i data-lucide="code"></i>
+                        </div>
+                        <h3>API RESTful</h3>
+                    </div>
+                    <p>Endpoints seguros para integración con sistemas terceros</p>
+                    <ul class="epic-features">
+                        <li>POST /envios - Crear envíos</li>
+                        <li>GET /tracking - Consultar estados</li>
+                        <li>GET /tarifas - Comparar precios</li>
+                        <li>Documentación completa</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Shipment View -->
+        <div id="createShipmentView" class="dashboard-view">
+            <div class="view-header">
+                <button class="btn btn-outline" onclick="showMainDashboard()">
+                    <i data-lucide="arrow-left"></i>
+                    Volver al Dashboard
+                </button>
+                <h1>Crear Nuevo Envío</h1>
+            </div>
+
+            <div class="shipment-form-container">
+                <form id="shipmentForm" class="shipment-form">
+                    <div class="form-section">
+                        <h3>
+                            <i data-lucide="user"></i>
+                            Datos del Remitente
+                        </h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="senderName">Nombre Completo *</label>
+                                <input type="text" id="senderName" name="senderName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="senderEmail">Email *</label>
+                                <input type="email" id="senderEmail" name="senderEmail" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="senderPhone">Teléfono *</label>
+                                <input type="tel" id="senderPhone" name="senderPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="senderCompany">Empresa</label>
+                                <input type="text" id="senderCompany" name="senderCompany">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="senderAddress">Dirección Completa *</label>
+                            <textarea id="senderAddress" name="senderAddress" rows="2" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>
+                            <i data-lucide="map-pin"></i>
+                            Datos del Destinatario
+                        </h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="receiverName">Nombre Completo *</label>
+                                <input type="text" id="receiverName" name="receiverName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="receiverEmail">Email</label>
+                                <input type="email" id="receiverEmail" name="receiverEmail">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="receiverPhone">Teléfono *</label>
+                                <input type="tel" id="receiverPhone" name="receiverPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="receiverDni">DNI/RUC</label>
+                                <input type="text" id="receiverDni" name="receiverDni">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="receiverAddress">Dirección Completa *</label>
+                            <textarea id="receiverAddress" name="receiverAddress" rows="2" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>
+                            <i data-lucide="package"></i>
+                            Información del Paquete
+                        </h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="packageWeight">Peso (kg) *</label>
+                                <input type="number" id="packageWeight" name="packageWeight" step="0.1" min="0.1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="packageValue">Valor Declarado (S/)</label>
+                                <input type="number" id="packageValue" name="packageValue" step="0.01" min="0">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="packageLength">Largo (cm)</label>
+                                <input type="number" id="packageLength" name="packageLength" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="packageWidth">Ancho (cm)</label>
+                                <input type="number" id="packageWidth" name="packageWidth" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="packageHeight">Alto (cm)</label>
+                                <input type="number" id="packageHeight" name="packageHeight" min="1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="packageDescription">Descripción del Contenido *</label>
+                            <textarea id="packageDescription" name="packageDescription" rows="2" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="showMainDashboard()">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i data-lucide="plus"></i>
+                            Crear Envío
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tracking View -->
+        <div id="trackingView" class="dashboard-view">
+            <div class="view-header">
+                <button class="btn btn-outline" onclick="showMainDashboard()">
+                    <i data-lucide="arrow-left"></i>
+                    Volver al Dashboard
+                </button>
+                <h1>Rastrear Envío</h1>
+            </div>
+
+            <div class="tracking-container">
+                <div class="tracking-search">
+                    <div class="search-form">
+                        <div class="form-group">
+                            <label for="trackingCode">Código de Envío</label>
+                            <div class="search-input-group">
+                                <input type="text" id="trackingCode" placeholder="Ej: SND-001" value="SND-001">
+                                <button class="btn btn-primary" onclick="searchShipment()">
+                                    <i data-lucide="search"></i>
+                                    Buscar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="trackingResults" class="tracking-results">
+                    <div class="tracking-info">
+                        <div class="tracking-header">
+                            <h3>Envío SND-001</h3>
+                            <span class="badge badge-warning">En Tránsito</span>
+                        </div>
+                        <div class="tracking-details">
+                            <div class="detail-item">
+                                <span class="label">Remitente:</span>
+                                <span class="value">TechStore SA</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Destinatario:</span>
+                                <span class="value">Juan Pérez</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Destino:</span>
+                                <span class="value">Lima, Perú</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Courier:</span>
+                                <span class="value">CourierExpress</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 60%;"></div>
+                        </div>
+                        <span class="progress-text">60% Completado</span>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i data-lucide="check"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Registrado</h4>
+                                <p>Envío registrado en el sistema</p>
+                                <span class="timestamp">15 Ene 2024, 10:30 AM</span>
+                                <span class="location">Lima, Perú</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i data-lucide="truck"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Recogido</h4>
+                                <p>Paquete recogido por courier</p>
+                                <span class="timestamp">15 Ene 2024, 3:45 PM</span>
+                                <span class="location">Lima, Perú</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item active">
+                            <div class="timeline-icon">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>En Tránsito</h4>
+                                <p>En camino a destino</p>
+                                <span class="timestamp">16 Ene 2024, 8:20 AM</span>
+                                <span class="location">Terminal Lima</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i data-lucide="home"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>En Reparto</h4>
+                                <p>Salió para entrega</p>
+                                <span class="timestamp">Pendiente</span>
+                                <span class="location">Lima, Perú</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i data-lucide="check-circle"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Entregado</h4>
+                                <p>Paquete entregado exitosamente</p>
+                                <span class="timestamp">Pendiente</span>
+                                <span class="location">Lima, Perú</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other views will be added in subsequent files -->
+        <div id="quotationView" class="dashboard-view">
+            <div class="view-header">
+                <button class="btn btn-outline" onclick="showMainDashboard()">
+                    <i data-lucide="arrow-left"></i>
+                    Volver al Dashboard
+                </button>
+                <h1>Cotizar Tarifas</h1>
+            </div>
+            <div class="placeholder-content">
+                <p>Vista de cotización en desarrollo...</p>
+            </div>
+        </div>
+
+        <div id="notificationsView" class="dashboard-view">
+            <div class="view-header">
+                <button class="btn btn-outline" onclick="showMainDashboard()">
+                    <i data-lucide="arrow-left"></i>
+                    Volver al Dashboard
+                </button>
+                <h1>Notificaciones</h1>
+            </div>
+            <div class="placeholder-content">
+                <p>Vista de notificaciones en desarrollo...</p>
+            </div>
+        </div>
+
+        <div id="reportsView" class="dashboard-view">
+            <div class="view-header">
+                <button class="btn btn-outline" onclick="showMainDashboard()">
+                    <i data-lucide="arrow-left"></i>
+                    Volver al Dashboard
+                </button>
+                <h1>Reportes y Analítica</h1>
+            </div>
+            <div class="placeholder-content">
+                <p>Vista de reportes en desarrollo...</p>
+            </div>
+        </div>
+
+        <div id="apiView" class="dashboard-view">
+            <div class="view-header">
+                <button class="btn btn-outline" onclick="showMainDashboard()">
+                    <i data-lucide="arrow-left"></i>
+                    Volver al Dashboard
+                </button>
+                <h1>API RESTful</h1>
+            </div>
+            <div class="placeholder-content">
+                <p>Documentación de API en desarrollo...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Procesando...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-backdrop" onclick="closeSuccessModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>¡Éxito!</h2>
+                <button class="modal-close" onclick="closeSuccessModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="success-content">
+                <div class="success-icon">
+                    <i data-lucide="check-circle"></i>
+                </div>
+                <p id="successMessage">Operación completada exitosamente</p>
+                <button class="btn btn-primary" onclick="closeSuccessModal()">
+                    Continuar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
